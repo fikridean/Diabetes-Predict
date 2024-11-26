@@ -205,7 +205,7 @@ Kode diatas menghasilkan *output*
 | Male   | 41430        | 41.4       |
 | Other  | 18           | 0.0        |
 
-![Gender Distribution Graph](image.png)
+![Gender Distribution Graph](https://raw.githubusercontent.com/fikridean/Diabetes-Predict/refs/heads/main/assets/image.png)
 
 Berdasarkan grafik diatas, dapat dilihat bahwa jumlah data berjenis kelamin **perempuan berjumlah 58552 (58,6 persen)** dan data berjenis kelamin **laki-laki berjumlah 41430 (41,4 persen)**. Selain itu terdapat juga data berjenis kelamin lainnya (*other*)
 
@@ -225,7 +225,7 @@ Kode diatas menghasilkan *output* sebagai berikut:
 | not current     | 6447         | 6.4        |
 | ever            | 4004         | 4.0        |
 
-![Smoking History Distribution Graph](image-1.png)
+![Smoking History Distribution Graph](https://raw.githubusercontent.com/fikridean/Diabetes-Predict/refs/heads/main/assets/image-1.png)
 
 Berdasarkan grafik diatas, dapat dilihat bahwa jumlah data yang **tidak terdapat informasi mengenai riwayat merokok** dan data yang memiliki riwayat **tidak pernah merokok** mendominasi pada *dataset*
 
@@ -237,7 +237,7 @@ plt.show()
 
 Kode diatas menghasilkan *output* sebagai berikut:
 
-![Numeric Data Distribution](image-2.png)
+![Numeric Data Distribution](https://raw.githubusercontent.com/fikridean/Diabetes-Predict/refs/heads/main/assets/image-2.png)
 
 Fitur-fitur yang termasuk ke dalam data numerikal dapat dilihat pada histogram diatas
 
@@ -265,7 +265,7 @@ for col in categorical_features:
 
 Kode diatas menghasilkan *output* sebagai berikut:
 
-![Rata-rata diabetes relatif terhadap gender](image-3.png)
+![Rata-rata diabetes relatif terhadap gender](https://raw.githubusercontent.com/fikridean/Diabetes-Predict/refs/heads/main/assets/image-3.png)
 
 **Rata-rata diabetes relatif terhadap jenis kelamin**
 
@@ -283,7 +283,7 @@ sns.pairplot(df, diag_kind = 'kde')
 
 Kode diatas menghasilkan *output* sebagai berikut:
 
-![dataset pairplot](image-4.png)
+![dataset pairplot](https://raw.githubusercontent.com/fikridean/Diabetes-Predict/refs/heads/main/assets/image-4.png)
 
 ```python
 sns.pairplot(df, diag_kind = 'kde', hue ='diabetes')
@@ -291,7 +291,7 @@ sns.pairplot(df, diag_kind = 'kde', hue ='diabetes')
 
 Kode diatas menghasilkan *output* sebagai berikut:
 
-![dataset pairplot with diabetes as hue](image-5.png)
+![dataset pairplot with diabetes as hue](https://raw.githubusercontent.com/fikridean/Diabetes-Predict/refs/heads/main/assets/image-5.png)
 
 Pada gambar kedua (yang menekankan perbedaan warna antara diabetes dan tidak),
 Dapat terlihat bahwa variabel seperti HbA1c_level dan blood_glucose_level memiliki hubungan kuat dengan diabetes, di mana nilai yang lebih tinggi pada kedua variabel ini sering dikaitkan dengan kasus diabetes.
@@ -306,7 +306,7 @@ plt.title("Correlation Matrix untuk Fitur Numerik ", size=20)
 
 Kode diatas menghasilkan *output* sebagai berikut:
 
-![Correlation matrix](image-6.png)
+![Correlation matrix](https://raw.githubusercontent.com/fikridean/Diabetes-Predict/refs/heads/main/assets/image-6.png)
 
 Pada correlation matrix diatas, dapat dilihat bahwa fitur HbA1c_level dan blood_glucose_level memiliki pengaruh besar untuk prediksi diabetes. Hal ini bisa diambil dengan melihat bahwa terdapat perbedaan signifikan antara penderita diabetes dan tidak pada variabel-variabel tersebut.
 
@@ -419,7 +419,7 @@ plt.show()
 
 Kode diatas menghasilkan *output* sebagai berikut:
 
-![Distribution of diabetes graph](image-7.png)
+![Distribution of diabetes graph](https://raw.githubusercontent.com/fikridean/Diabetes-Predict/refs/heads/main/assets/image-7.png)
 
 Dari *pie chart* diatas dapat dilihat bahwa terdapat imbalance data pada *dataset* ini. Selanjutnya akan dilakukan *oversampling* untuk mengatasi *imbalance data* tersebut.
 
@@ -794,7 +794,7 @@ plt.show()
 
 Kode diatas menghasilkan *output* sebagai berikut:
 
-![Confusion matrix for Random Forest model](image-8.png)
+![Confusion matrix for Random Forest model](https://raw.githubusercontent.com/fikridean/Diabetes-Predict/refs/heads/main/assets/image-8.png)
 
 ```python
 y_pred_test_rf = rf_model.predict(X_test)
