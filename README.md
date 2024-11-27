@@ -10,14 +10,14 @@ Masalah ini harus diselesaikan karena lonjakan jumlah penderita diabetes yang si
 
 Diabetes merupakan masalah kesehatan yang semakin meningkat di Indonesia, dengan banyak pasien terlambat didiagnosis, yang memperburuk kondisi mereka. Oleh karena itu, dibutuhkan pengembangan model *Machine Learning* untuk mendeteksi diabetes secara dini dan akurat. Model ini akan menganalisis data kesehatan pasien untuk memprediksi risiko diabetes, memungkinkan dokter mengambil tindakan preventif lebih awal.
 
-Manfaat dari model ini adalah membantu pihak medis, rumah sakit, atau pemerintah dalam mendeteksi diabetes lebih cepat, mengurangi komplikasi serius, dan mencegah penyakit berkembang ke tahap parah. Dengan penerapan model ini, diharapkan risiko komplikasi dapat diminimalkan, dan kualitas hidup penderita meningkat.
+Manfaat dari model ini adalah membantu pihak medis, rumah sakit, atau pemerintah dalam mendeteksi diabetes lebih cepat, mengurangi komplikasi serius, dan mencegah penyakit berkembang ke tahap parah. Dengan penerapan model ini, diharapkan risiko komplikasi dapat diminimalkan, dan kualitas hidup penderita meningkat. Dengan ini, pasien yang beresiko untuk menderita diabetes diharapkan dapat dengan cepat diidentifikasi dengan lebih cepat.
 
 Bagian laporan ini mencakup:
 
 ### Problem Statements
 
 Menjelaskan pernyataan masalah latar belakang:
-- Bagaimana cara memproses *dataset* agar dapat digunakan untuk membangun model *machine learning* untuk klasifikasi penderita diabetes?
+- Berdasarkan ekslorasi terhadap dataset, fitur-fitur apa saja yang dapat menentukan atau memberi pengaruh terhadap klasifikasi penderita diabetes?
 - Bagaimana cara memproses *dataset* agar dapat digunakan untuk pembuatan model *machine learning* klasifikasi penderita diabetes?
 - Bagaimana cara memperoleh model klasifikasi penderita diabetes dengan performa terbaik?
 
@@ -34,7 +34,7 @@ Menjelaskan tujuan dari pernyataan masalah:
 - Untuk membangun dan mengevaluasi model klasifikasi yang memiliki performa terbaik dalam memprediksi penderita diabetes, diperlukan untuk menggunakan beberapa algoritma guna mencari algoritma terbaik yang memiliki performa akurasi yang memumpuni. Pada kasus ini, digunakan tiga algoritma, yaitu `SVM`, `Random Forest`, dan `KNN` yang dimana diharapkan dapat memberikan performa akurasi yang baik.
 
 ## Data Understanding
-*Dataset* yang digunakan untuk pembangunan model machine learning ini adalah *dataset* "Diabetes prediction *dataset*" yang tersedia di situs web Kaggle pada [tautan](https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset) ini. *Dataset* tersebut adalah *dataset* kuantitatif yang berisi kolom-kolom yang dapat digunakan untuk memprediksi apakah seseorang menderita diabetes berdasarkan data-data yang diberikan. *Dataset* ini memiliki 10000 baris dan 9 kolom data.
+*Dataset* yang digunakan untuk pembangunan model machine learning ini adalah *dataset* "Diabetes prediction *dataset*" yang tersedia di situs web Kaggle pada [tautan](https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset) ini. *Dataset* tersebut adalah *dataset* kuantitatif yang berisi kolom-kolom yang dapat digunakan untuk memprediksi apakah seseorang menderita diabetes berdasarkan data-data yang diberikan. *Dataset* ini memiliki 100000 baris dan 9 kolom data.
 
 *Dataset* ini cocok untuk membangun model *supervised learning*, khususnya *binary classification*. Dalam kasus ini adalah melakukan klasifikasi penderita diabetes berdasarkan delapan fitur.
 
@@ -592,30 +592,6 @@ Classification Report:
 weighted avg       0.95      0.95      0.95     35066
 ```
 
-Model SVM dengan konfigurasi **SVC** menunjukkan performa yang sangat baik pada *dataset*.
-
-- Akurasi:
-  - Data latih: **94,67%**
-  - Data uji: **94,72%**
-  - Hasil ini menunjukkan generalisasi yang kuat tanpa indikasi overfitting.
-
-- Data Klasifikasi:
-  - **Kelas 0** (Tidak Diabetes):
-    - Presisi: **93%**
-    - Recall: **97%**
-    - F1-Score: **95%**
-  - **Kelas 1** (Diabetes):
-    - Presisi: **97%**
-    - Recall: **93%**
-    - F1-Score: **95%**
-
-- Rata-rata metrik untuk seluruh kelas:
-  - Presisi: **95%**
-  - Recall: **95%**
-  - F1-Score: **95%**
-
-- *Dataset* berukuran **35.066 sampel**, dengan keseimbangan performa yang baik antara kedua kelas.
-
 **Model *machine learning* menggunakan algoritma `Random Forest`**
 
 Parameter yang digunakan pada model yang menggunakan algoritma `Random Forest` adalah parameter default dari algoritma tersebut. Parameter yang digunakan adalah sebagai berikut:
@@ -659,30 +635,6 @@ Classification Report:
 weighted avg       0.98      0.98      0.98     35066
 ```
 
-Model Random Forest menunjukkan performa yang sangat baik pada *dataset*.
-
-- Akurasi:
-  - Data latih: **99,96%**
-  - Data uji: **97,92%**
-  - Hasil ini menunjukkan bahwa model mampu menggeneralisasi dengan baik pada data uji.
-
-- Data Klasifikasi:
-  - **Kelas 0** (Tidak Diabetes):
-    - Presisi: **97%**
-    - Recall: **99%**
-    - F1-Score: **98%**
-  - **Kelas 1** (Diabetes):
-    - Presisi: **99%**
-    - Recall: **97%**
-    - F1-Score: **98%**
-
-- Rata-rata metrik untuk seluruh kelas:
-  - Presisi: **98%**
-  - Recall: **98%**
-  - F1-Score: **98%**
-
-- *Dataset* berukuran **35.066 sampel**, dengan performa yang sangat baik dan keseimbangan yang kuat antara kedua kelas.
-
 **Model *machine learning* menggunakan algoritma `KNN`**
 
 Parameter yang digunakan pada model yang menggunakan algoritma `KNN` adalah parameter default dari algoritma tersebut. Parameter yang digunakan adalah sebagai berikut:
@@ -721,30 +673,6 @@ Classification Report:
 weighted avg       0.96      0.96      0.96     35066
 ```
 
-Model KNN menunjukkan performa yang sangat baik pada *dataset*.
-
-- Akurasi:
-  - Data latih: **97,34%**
-  - Data uji: **96,10%**
-  - Hasil ini menunjukkan model dapat menggeneralisasi dengan baik pada data uji.
-
-- Data Klasifikasi:
-  - **Kelas 0** (Tidak Diabetes):
-    - Presisi: **96%**
-    - Recall: **96%**
-    - F1-Score: **96%**
-  - **Kelas 1** (Diabetes):
-    - Presisi: **96%**
-    - Recall: **96%**
-    - F1-Score: **96%**
-
-- Rata-rata metrik untuk seluruh kelas:
-  - Presisi: **96%**
-  - Recall: **96%**
-  - F1-Score: **96%**
-
-- *Dataset* berukuran **35.066 sampel**, dengan keseimbangan performa yang sangat baik antara kedua kelas.
-
 Dari hasil pelatihan dan evaluasi masing-masing model dengan ketiga algoritma yang telah disebutkan sebelumnya, dapat dilihat bahwa algoritma Random Forest memiliki rata-rata metrik paling tinggi dari kedua algoritma lainnya. Berdasarkan kelebihan-kelebihan dari algoritma tersebut dan hasil akurasi yang memadai serta merupakan nilai tertinggi dibanding algoritma lainnya, algoritma Random Forest menjadi algoritma yang cocok untuk dijadikan sebagai solusi.
 
 
@@ -780,63 +708,159 @@ Berdasarkan hasil dari proses *modelling* yang dimana telah dipilih model terbai
 5. **Support**  
    - Jumlah data sebenarnya untuk setiap kelas. Support memberikan informasi tentang jumlah sampel yang ada untuk masing-masing kelas dalam dataset.
 
+**Model *machine learning* menggunakan algoritma `SVM`**
 
 ```python
 # Compute the confusion matrix
-conf_matrix = confusion_matrix(y_test, y_pred_test_rf)
+svm_conf_matrix = confusion_matrix(y_test, y_pred_test_svm)
 
 # Display the confusion matrix
-disp = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=rf_model.classes_)
-disp.plot(cmap=plt.cm.Blues)
+svm_disp = ConfusionMatrixDisplay(confusion_matrix=svm_conf_matrix, display_labels=svm_model.classes_)
+svm_disp.plot(cmap=plt.cm.Blues)
+plt.title("Confusion Matrix - SVM Model")
+plt.show()
+```
+
+Kode diatas menghasilkan *output* sebagai berikut:
+
+![Confusion Matrix - SVM Model](https://raw.githubusercontent.com/fikridean/Diabetes-Predict/refs/heads/main/assets/image-8.png)
+
+Model SVM dengan konfigurasi **SVC** menunjukkan performa yang sangat baik pada *dataset*.
+
+- Akurasi:
+  - Data latih: **94,73%**
+  - Data uji: **94,53%**
+  - Hasil ini menunjukkan generalisasi yang kuat tanpa indikasi overfitting.
+
+- Data Klasifikasi:
+  - **Kelas 0** (Tidak Diabetes):
+    - Presisi: **92%**
+    - Recall: **97%**
+    - F1-Score: **95%**
+  - **Kelas 1** (Diabetes):
+    - Presisi: **97%**
+    - Recall: **92%**
+    - F1-Score: **94%**
+
+- Rata-rata metrik untuk seluruh kelas:
+  - Presisi: **95%**
+  - Recall: **95%**
+  - F1-Score: **95%**
+
+- *Dataset* berukuran **35.066 sampel**, dengan keseimbangan performa yang baik antara kedua kelas.
+
+**Model *machine learning* menggunakan algoritma `Random Forest`**
+
+```python
+# Compute the confusion matrix
+rf_conf_matrix = confusion_matrix(y_test, y_pred_test_rf)
+
+# Display the confusion matrix
+rf_disp = ConfusionMatrixDisplay(confusion_matrix=rf_conf_matrix, display_labels=rf_model.classes_)
+rf_disp.plot(cmap=plt.cm.Blues)
 plt.title("Confusion Matrix - Random Forest Model")
 plt.show()
 ```
 
 Kode diatas menghasilkan *output* sebagai berikut:
 
-![Confusion matrix for Random Forest model](https://raw.githubusercontent.com/fikridean/Diabetes-Predict/refs/heads/main/assets/image-8.png)
+![Confusion Matrix - Random Forest Model](https://raw.githubusercontent.com/fikridean/Diabetes-Predict/refs/heads/main/assets/image-9.png)
+
+Model Random Forest menunjukkan performa yang sangat baik pada *dataset*.
+
+- Akurasi:
+  - Data latih: **99,96%**
+  - Data uji: **97,89%**
+  - Hasil ini menunjukkan bahwa model mampu menggeneralisasi dengan baik pada data uji.
+
+- Data Klasifikasi:
+  - **Kelas 0** (Tidak Diabetes):
+    - Presisi: **97%**
+    - Recall: **99%**
+    - F1-Score: **98%**
+  - **Kelas 1** (Diabetes):
+    - Presisi: **99%**
+    - Recall: **97%**
+    - F1-Score: **98%**
+
+- Rata-rata metrik untuk seluruh kelas:
+  - Presisi: **98%**
+  - Recall: **98%**
+  - F1-Score: **98%**
+
+- *Dataset* berukuran **35.066 sampel**, dengan performa yang sangat baik dan keseimbangan yang kuat antara kedua kelas.
+
+**Model *machine learning* menggunakan algoritma `KNN`**
 
 ```python
-y_pred_test_rf = rf_model.predict(X_test)
-accuracy_test_rf = accuracy_score(y_pred_test_rf, y_test)
-print('Random Forest - accuracy_test:', accuracy_test_rf)
-print('Classification Report:\n', classification_report(y_test, y_pred_test_rf))
+# Compute the confusion matrix
+knn_conf_matrix = confusion_matrix(y_test, y_pred_test_knn)
+
+# Display the confusion matrix
+knn_disp = ConfusionMatrixDisplay(confusion_matrix=knn_conf_matrix, display_labels=knn_model.classes_)
+knn_disp.plot(cmap=plt.cm.Blues)
+plt.title("Confusion Matrix - KNN Model")
+plt.show()
 ```
 
 Kode diatas menghasilkan *output* sebagai berikut:
 
-```python
-Random Forest - accuracy_test: 0.9785547253750071
-Classification Report:
-               precision    recall  f1-score   support
+![Confusion Matrix - KNN Model](https://raw.githubusercontent.com/fikridean/Diabetes-Predict/refs/heads/main/assets/image-10.png)
 
-           0       0.97      0.99      0.98     17697
-           1       0.99      0.97      0.98     17369
+Model KNN menunjukkan performa yang sangat baik pada *dataset*.
 
-    accuracy                           0.98     35066
-   macro avg       0.98      0.98      0.98     35066
-weighted avg       0.98      0.98      0.98     35066
-```
+- Akurasi:
+  - Data latih: **97,39%**
+  - Data uji: **95,97%**
+  - Hasil ini menunjukkan model dapat menggeneralisasi dengan baik pada data uji.
 
-Berikut informasi yang didapatkan dari hasil *confusion matrix* dan *classification report*,
+- Data Klasifikasi:
+  - **Kelas 0** (Tidak Diabetes):
+    - Presisi: **96%**
+    - Recall: **96%**
+    - F1-Score: **96%**
+  - **Kelas 1** (Diabetes):
+    - Presisi: **96%**
+    - Recall: **96%**
+    - F1-Score: **96%**
 
-- **Akurasi**: **97.86%** pada data uji.
-- **Precision**:
-  - Kelas 0: **0.97**
-  - Kelas 1: **0.99**
-- **Recall**:
-  - Kelas 0: **0.99**
-  - Kelas 1: **0.97**
-- **F1-score**:
-  - Kelas 0 dan Kelas 1: **0.98**
-- **Support**:
-  - Kelas 0: **17,697 sampel**
-  - Kelas 1: **17,369 sampel**
-- **Jumlah total sampel**: **35,066 sampel**
+- Rata-rata metrik untuk seluruh kelas:
+  - Presisi: **96%**
+  - Recall: **96%**
+  - F1-Score: **96%**
 
-Model ini mencapai tingkat **akurasi sebesar 97.86%** pada data uji, menunjukkan performa yang sangat baik. **Precision** untuk kelas 0 adalah **0.97** dan kelas 1 adalah **0.99**, sementara **recall** untuk kelas 0 mencapai **0.99** dan kelas 1 sebesar **0.97**. **F1-score** untuk kedua kelas adalah **0.98**, menunjukkan keseimbangan antara precision dan recall. Dengan total **35,066 sampel**, distribusi data cukup seimbang, yakni **17,697 untuk kelas 0** dan **17,369 untuk kelas 1**. Model ini mampu mengklasifikasikan kedua kelas dengan sangat baik.
+- *Dataset* berukuran **35.066 sampel**, dengan keseimbangan performa yang sangat baik antara kedua kelas.
+
+Dari hasil evaluasi masing-masing model dengan ketiga algoritma yang telah disebutkan sebelumnya, dapat dilihat bahwa algoritma *Random Forest* memiliki rata-rata metrik paling tinggi dibandingkan kedua algoritma lainnya. Berdasarkan kelebihan-kelebihan dari algoritma tersebut dan hasil akurasi yang memadai serta merupakan nilai tertinggi dibanding algoritma lainnya, algoritma *Random Forest* menjadi algoritma yang cocok untuk dijadikan sebagai solusi.
+
+Model ini mencapai tingkat **akurasi sebesar 97,89%** pada data uji, menunjukkan performa yang sangat baik. **Precision** untuk kelas 0 adalah **0.97** dan kelas 1 adalah **0.99**, sementara **recall** untuk kelas 0 mencapai **0.99** dan kelas 1 sebesar **0.97**. **F1-score** untuk kedua kelas adalah **0.98**, menunjukkan keseimbangan antara precision dan recall. Dengan total **35,066 sampel**, distribusi data cukup seimbang, yakni **17,513 untuk kelas 0** dan **17,553 untuk kelas 1**. Model ini mampu mengklasifikasikan kedua kelas dengan sangat baik.
+
+
+Hasil evaluasi menunjukkan bahwa model yang dibangun telah **memenuhi seluruh problem statement** yang dirumuskan dan berhasil mencapai *goals* yang ditetapkan. Berikut adalah pencapaian masing-masing pernyataan masalah:
+
+***Problem Statement 1***: **Berdasarkan ekslorasi terhadap dataset, fitur-fitur apa saja yang dapat menentukan atau memberi pengaruh terhadap klasifikasi penderita diabetes?**
+- Proses eksplorasi dan pemrosesan *dataset* telah dilakukan secara menyeluruh. 
+- Termasuk *univariate anaylysis*, *multivariate analysis, dan korelasi antar fitur. 
+- Berhasil mencapai *goals* yang ditetapkan: Melakukan eksplorasi terhadap *dataset* sehingga dapat digunakan dalam pembuatan model *machine learning* klasifikasi penderita diabetes.
+
+***Problem Statement 2***: **Bagaimana cara memproses *dataset* agar dapat digunakan untuk pembuatan model *machine learning* klasifikasi penderita diabetes?**  
+- Pemrosesan mencakup *removal duplicates and NaN data*, *one-hot encoding*, penanganan *imbalance data* menggunakan SMOTE, standarisasi fitur, dan pembagian data (latih dan *testing*). 
+- Pemrosesan ini memastikan *dataset* siap digunakan dalam pelatihan model.
+- Berhasil mencapai *goals* yang ditetapkan: Memproses *dataset* untuk dapat digunakan pada proses training.
+
+***Problem Statement 3***: **Bagaimana cara memperoleh model klasifikasi penderita diabetes dengan performa terbaik?**  
+- Tiga algoritma *machine learning* (SVC, Random Forest, dan KNN) telah digunakan untuk membangun model klasifikasi. 
+- Hasil evaluasi menunjukkan bahwa model **Random Forest** memiliki performa terbaik dengan akurasi **97,92%** pada data *testing*.
+- Metrik tambahan seperti presisi, recall, dan f1-score menunjukkan bahwa model dapat memberikan prediksi yang akurat dan memuaskan.
+- Berhasil mencapai *goals* yang ditetapkan: Membangun dan mengevaluasi model klasifikasi yang memiliki performa terbaik dalam memprediksi penderita diabetes.
+
+Solusi yang telah diperoleh juga memberikan dampak pada kasus terkait, di mana model yang dibuat mampu memprediksi secara dini dan akurat apakah seseorang menderita diabetes.
+
 
 ## Referensi
 [1]	L. Puspitasari, “Rumah sakit dengan pelayanan berkualitas,” Siloam Hospitals. Accessed: Nov. 25, 2024. [Online]. Available: https://www.siloamhospitals.com/informasi-siloam/artikel/angka-diabetes-di-indonesia-semakin-tinggi-berikut-faktanya-1
 [2]	National Institute of Diabetes and Digestive and Kidney Disease, “What is diabetes?,” NIDDK - National Institute of Diabetes and Digestive and Kidney Diseases, Oct. 04, 2024. Accessed: Nov. 25, 2024. [Online]. Available: https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes
 [3]	M. E. Febrian, F. X. Ferdinan, G. P. Sendani, K. M. Suryanigrum, and R. Yunanda, “Diabetes prediction using supervised machine learning,” Procedia Computer Science, vol. 216, pp. 21–30, 2023, doi: 10.1016/j.procs.2022.12.107.
+[4]	International Business Machines, “SPSS Modeler,” International Business Machines. Accessed: Nov. 27, 2024. [Online]. Available: https://www.ibm.com/docs/en/spss-modeler/18.4.0?topic=models-how-svm-works
+[5]	R. Meltzer, “What is Random Forest? [Beginner’s Guide + Examples],” CareerFoundry. Accessed: Nov. 27, 2024. [Online]. Available: https://careerfoundry.com/en/blog/data-analytics/what-is-random-forest/
+[6]	T. LaViale, “Generative AI,” Arize AI. Accessed: Nov. 27, 2024. [Online]. Available: https://arize.com/blog-course/knn-algorithm-k-nearest-neighbor/
