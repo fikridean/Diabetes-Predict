@@ -578,14 +578,13 @@ print('Classification Report:\n', classification_report(y_test, y_pred_test_svm)
 Kode diatas menghasilkan *output* sebagai berikut:
 
 ```python
-SVC - accuracy_train: 0.946692618100412
-SVC - accuracy_test: 0.9472138253578966
-
+SVC - accuracy_train: 0.9472629792816301
+SVC - accuracy_test: 0.9453031426452975
 Classification Report:
                precision    recall  f1-score   support
 
-           0       0.93      0.97      0.95     17447
-           1       0.97      0.93      0.95     17619
+           0       0.92      0.97      0.95     17513
+           1       0.97      0.92      0.94     17553
 
     accuracy                           0.95     35066
    macro avg       0.95      0.95      0.95     35066
@@ -622,13 +621,13 @@ print('Classification Report:\n', classification_report(y_test, y_pred_test_rf))
 Kode diatas menghasilkan *output* sebagai berikut:
 
 ```python
-Random Forest - accuracy_train: 0.9995722291140865
-Random Forest - accuracy_test: 0.9792391490332516
+Random Forest - accuracy_train: 0.9995793586288517
+Random Forest - accuracy_test: 0.9789254548565562
 Classification Report:
                precision    recall  f1-score   support
 
-           0       0.97      0.99      0.98     17483
-           1       0.99      0.97      0.98     17583
+           0       0.97      0.99      0.98     17513
+           1       0.99      0.97      0.98     17553
 
     accuracy                           0.98     35066
    macro avg       0.98      0.98      0.98     35066
@@ -660,13 +659,13 @@ print('Classification Report:\n', classification_report(y_test, y_pred_test_knn)
 Kode diatas menghasilkan *output* sebagai berikut:
 
 ```python
-KNN - accuracy_train: 0.9733641328371191
-KNN - accuracy_test: 0.9609593338276393
+KNN - accuracy_train: 0.9738845874149805
+KNN - accuracy_test: 0.9596760394684309
 Classification Report:
                precision    recall  f1-score   support
 
-           0       0.96      0.96      0.96     17483
-           1       0.96      0.96      0.96     17583
+           0       0.96      0.96      0.96     17513
+           1       0.96      0.96      0.96     17553
 
     accuracy                           0.96     35066
    macro avg       0.96      0.96      0.96     35066
