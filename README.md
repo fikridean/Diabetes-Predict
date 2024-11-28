@@ -518,6 +518,8 @@ Setelah proses *Data Preparation* telah dilakukan, selanjutnya adalah proses *Mo
 Pada proses *modelling* ini, tiga algoritma akan digunakan untuk melatih model. Berikut ketiga algoritma tersebut disertai dengan kelebihan dan kekurangan dari setiap algoritma:
 
 - SVC (Support Vector Classifier)
+  - **Penjelasan**:  
+    - SVM bekerja dengan memetakan data ke ruang fitur berdimensi tinggi sehingga *data points* dapat dikelompokkan meskipun data tersebut awalnya tidak dapat dipisahkan secara linear. Algoritme ini mencari pemisah antara kategori yang direpresentasikan sebagai sebuah *hyperplane*. Karakteristik data baru dapat digunakan untuk memprediksi kelompok mana yang sesuai.  
   - Kelebihan:
     - Baik untuk data berdimensi tinggi.
     - Margin terbesar antara kelas.
@@ -526,8 +528,14 @@ Pada proses *modelling* ini, tiga algoritma akan digunakan untuk melatih model. 
     - Lambat untuk dataset besar.
     - Memerlukan tuning parameter yang hati-hati.
     - Kurang efisien untuk data besar karena berat di komputasi.
+  - Parameter yang digunakan pada model yang menggunakan algoritma `SVC` adalah parameter default dari algoritma tersebut. Parameter yang digunakan adalah sebagai berikut:
+    - `C (Regularisasi)`: Parameter regularisasi yang mengontrol keseimbangan antara kesalahan pada data pelatihan dan penyederhanaan model (maksimalisasi margin). Nilai default dari parameter ini adalah `1.0`.
+    - `kernel`: Jenis fungsi kernel yang digunakan untuk memetakan data ke dimensi yang lebih tinggi. Nilai default dari parameter ini adalah `rbf`.
+    - `gamma`: Koefisien kernel untuk kernel 'rbf', 'poly', dan 'sigmoid'. Nilai default dari parameter ini adalah `scale`.
 
 - Random Forest
+  - **Penjelasan**:  
+      - Random Forest bekerja dengan menumbuhkan banyak **pohon keputusan** (*decision trees*) yang digabungkan untuk meningkatkan akurasi prediksi. Dalam *classification*, setiap pohon memberikan "vote," dan hasil akhir dipilih berdasarkan suara mayoritas. Dalam *regression*, hasilnya adalah rata-rata output semua pohon.
   - Kelebihan:
     - Tahan terhadap overfitting.
     - Bisa menangani data hilang dan outliers.
@@ -536,8 +544,16 @@ Pada proses *modelling* ini, tiga algoritma akan digunakan untuk melatih model. 
     - Sulit diinterpretasi secara keseluruhan.
     - Waktu pelatihan lama.
     - Memerlukan banyak memori.
+    - Parameter yang digunakan pada model yang menggunakan algoritma `Random Forest` adalah parameter default dari algoritma tersebut. Parameter yang digunakan adalah sebagai berikut:
+      - `n_estimators`: Jumlah *tree* pada algoritma `Random Forest`. Semakin besar, semakin baik prediksi, tetapi membutuhkan waktu komputasi lebih lama. Nilai default dari parameter ini adalah `100`.
+      - `max_depth`: Kedalaman yang ditentukan untuk *tree*. Nilai default dari parameter ini adalah `None`.
+      - `min_samples_leaf`: Jumlah minimum sampel pada *tree*. Nilai default dari parameter ini adalah `1`.
+      - `min_samples_split`: Jumlah minimum sampel untuk membagi node internal. Nilai default dari parameter ini adalah `2`.
+      - `max_features`: Jumlah maksimum fitur yang dipertimbangkan untuk split. Nilai default dari parameter ini adalah `sqrt`.
 
 - K-Nearest Neighbors (KNN)
+  - **Penjelasan**:  
+      - KNN bekerja dengan menghitung jarak antara *query point* dan setiap *training point*, memilih **k-nearest neighbors**, lalu memprediksi kelas atau nilai berdasarkan mayoritas kelas atau rata-rata nilai *neighbors*. *Distance metric* yang umum digunakan meliputi *Euclidean*, *Manhattan*, *Minkowski*, *Hamming*, dan *Cosine distance*, yang pemilihannya disesuaikan dengan masalah yang dihadapi. Nilai k menentukan jumlah *neighbors* yang dipertimbangkan: k besar menghasilkan batas keputusan yang lebih halus tetapi berisiko *underfitting*, sedangkan k kecil menghasilkan batas yang lebih kompleks tetapi berisiko *overfitting*.  
   - Kelebihan:
     - Sederhana dan mudah dipahami.
     - Tidak memerlukan pelatihan eksplisit.
@@ -546,37 +562,13 @@ Pada proses *modelling* ini, tiga algoritma akan digunakan untuk melatih model. 
     - Waktu inferensi lama.
     - Sensitif terhadap skala data.
     - Rentan terhadap noise dan data tidak seimbang.
-
+    - Parameter yang digunakan pada model yang menggunakan algoritma `KNN` adalah parameter default dari algoritma tersebut. Parameter yang digunakan adalah sebagai berikut:
+      - `n_neighbors`: Jumlah *neighbors* yang ditentukan. Nilai default dari parameter ini adalah `5`.
+      - `algorithm`: Algoritma pencarian *neighbors*. Nilai default dari parameter ini adalah `auto`.
 
 Dari ketiga algoritma tersebut, akan dipilih model terbaik yang diukur melalui rata-rata metrik setelah masing-masing model dibuat, dilatih, dan dievaluasi.
 
 **Model *machine learning* menggunakan algoritma `SVC`**
-
-Parameter yang digunakan pada model yang menggunakan algoritma `SVC` adalah parameter default dari algoritma tersebut. Parameter yang digunakan adalah sebagai berikut:
-
-- `C (Regularisasi)`: Parameter regularisasi yang mengontrol keseimbangan antara kesalahan pada data pelatihan dan penyederhanaan model (maksimalisasi margin). Nilai default dari parameter ini adalah `1.0`.
-- `kernel`: Jenis fungsi kernel yang digunakan untuk memetakan data ke dimensi yang lebih tinggi. Nilai default dari parameter ini adalah `rbf`.
-- `gamma`: Koefisien kernel untuk kernel 'rbf', 'poly', dan 'sigmoid'. Nilai default dari parameter ini adalah `scale`.
-
-```python
-svm_model = SVC()
-
-svm_model.fit(X_train, y_train)
-
-y_pred_train_svm = svm_model.predict(X_train)
-y_pred_test_svm = svm_model.predict(X_test)
-
-accuracy_train_svm = accuracy_score(y_pred_train_svm, y_train)
-accuracy_test_svm = accuracy_score(y_pred_test_svm, y_test)
-
-print('SVC - accuracy_train:', accuracy_train_svm)
-print('SVC - accuracy_test:', accuracy_test_svm)
-
-print('Classification Report:\n', classification_report(y_test, y_pred_test_svm))
-```
-
-Kode diatas menghasilkan *output* sebagai berikut:
-
 ```python
 SVC - accuracy_train: 0.9472629792816301
 SVC - accuracy_test: 0.9453031426452975
@@ -592,34 +584,6 @@ weighted avg       0.95      0.95      0.95     35066
 ```
 
 **Model *machine learning* menggunakan algoritma `Random Forest`**
-
-Parameter yang digunakan pada model yang menggunakan algoritma `Random Forest` adalah parameter default dari algoritma tersebut. Parameter yang digunakan adalah sebagai berikut:
-
-- `n_estimators`: Jumlah *tree* pada algoritma `Random Forest`. Semakin besar, semakin baik prediksi, tetapi membutuhkan waktu komputasi lebih lama. Nilai default dari parameter ini adalah `100`.
-- `max_depth`: Kedalaman yang ditentukan untuk *tree*. Nilai default dari parameter ini adalah `None`.
-- `min_samples_leaf`: Jumlah minimum sampel pada *tree*. Nilai default dari parameter ini adalah `1`.
-- `min_samples_split`: Jumlah minimum sampel untuk membagi node internal. Nilai default dari parameter ini adalah `2`.
-- `max_features`: Jumlah maksimum fitur yang dipertimbangkan untuk split. Nilai default dari parameter ini adalah `sqrt`.
-
-```python
-rf_model = RandomForestClassifier()
-
-rf_model.fit(X_train, y_train)
-
-y_pred_train_rf = rf_model.predict(X_train)
-y_pred_test_rf = rf_model.predict(X_test)
-
-accuracy_train_rf = accuracy_score(y_pred_train_rf, y_train)
-accuracy_test_rf = accuracy_score(y_pred_test_rf, y_test)
-
-print('Random Forest - accuracy_train:', accuracy_train_rf)
-print('Random Forest - accuracy_test:', accuracy_test_rf)
-
-print('Classification Report:\n', classification_report(y_test, y_pred_test_rf))
-```
-
-Kode diatas menghasilkan *output* sebagai berikut:
-
 ```python
 Random Forest - accuracy_train: 0.9995793586288517
 Random Forest - accuracy_test: 0.9789254548565562
@@ -635,29 +599,6 @@ weighted avg       0.98      0.98      0.98     35066
 ```
 
 **Model *machine learning* menggunakan algoritma `KNN`**
-
-Parameter yang digunakan pada model yang menggunakan algoritma `KNN` adalah parameter default dari algoritma tersebut. Parameter yang digunakan adalah sebagai berikut:
-
-- `n_neighbors`: Jumlah *neighbors* yang ditentukan. Nilai default dari parameter ini adalah `5`.
-- `algorithm`: Algoritma pencarian *neighbors*. Nilai default dari parameter ini adalah `auto`.
-
-```python
-knn_model = KNeighborsClassifier()
-knn_model.fit(X_train, y_train)
-
-y_pred_train_knn = knn_model.predict(X_train)
-y_pred_test_knn = knn_model.predict(X_test)
-
-accuracy_train_knn = accuracy_score(y_pred_train_knn, y_train)
-accuracy_test_knn = accuracy_score(y_pred_test_knn, y_test)
-
-print('KNN - accuracy_train:', accuracy_train_knn)
-print('KNN - accuracy_test:', accuracy_test_knn)
-print('Classification Report:\n', classification_report(y_test, y_pred_test_knn))
-```
-
-Kode diatas menghasilkan *output* sebagai berikut:
-
 ```python
 KNN - accuracy_train: 0.9738845874149805
 KNN - accuracy_test: 0.9596760394684309
@@ -671,9 +612,6 @@ Classification Report:
    macro avg       0.96      0.96      0.96     35066
 weighted avg       0.96      0.96      0.96     35066
 ```
-
-Dari hasil pelatihan dan evaluasi masing-masing model dengan ketiga algoritma yang telah disebutkan sebelumnya, dapat dilihat bahwa algoritma Random Forest memiliki rata-rata metrik paling tinggi dari kedua algoritma lainnya. Berdasarkan kelebihan-kelebihan dari algoritma tersebut dan hasil akurasi yang memadai serta merupakan nilai tertinggi dibanding algoritma lainnya, algoritma Random Forest menjadi algoritma yang cocok untuk dijadikan sebagai solusi.
-
 
 ## Evaluation
 Berdasarkan hasil dari proses *modelling* yang dimana telah dipilih model terbaik yaitu model yang menggunakan algoritma *Random Forest*. Metrik evaluasi yang akan digunakan adalah sebagai berikut:
@@ -834,13 +772,13 @@ Dari hasil evaluasi masing-masing model dengan ketiga algoritma yang telah diseb
 
 Model ini mencapai tingkat **akurasi sebesar 97,89%** pada data uji, menunjukkan performa yang sangat baik. **Precision** untuk kelas 0 adalah **0.97** dan kelas 1 adalah **0.99**, sementara **recall** untuk kelas 0 mencapai **0.99** dan kelas 1 sebesar **0.97**. **F1-score** untuk kedua kelas adalah **0.98**, menunjukkan keseimbangan antara precision dan recall. Dengan total **35,066 sampel**, distribusi data cukup seimbang, yakni **17,513 untuk kelas 0** dan **17,553 untuk kelas 1**. Model ini mampu mengklasifikasikan kedua kelas dengan sangat baik.
 
-
 Hasil evaluasi menunjukkan bahwa model yang dibangun telah **memenuhi seluruh problem statement** yang dirumuskan dan berhasil mencapai *goals* yang ditetapkan. Berikut adalah pencapaian masing-masing pernyataan masalah:
 
 ***Problem Statement 1***: **Berdasarkan ekslorasi terhadap dataset, fitur-fitur apa saja yang dapat menentukan atau memberi pengaruh terhadap klasifikasi penderita diabetes?**
 - Proses eksplorasi dan pemrosesan *dataset* telah dilakukan secara menyeluruh. 
 - Termasuk *univariate anaylysis*, *multivariate analysis, dan korelasi antar fitur. 
 - Berhasil mencapai *goals* yang ditetapkan: Melakukan eksplorasi terhadap *dataset* sehingga dapat digunakan dalam pembuatan model *machine learning* klasifikasi penderita diabetes.
+- Terdapat 9 kolom fitur yang berpengaruh terhadap klasifikasi penderita diabetes yaitu `gender`, `age`, `hypertension`, `heart_disease`, `smoking_history`, `bmi`, `HbA1c_level`, dan `blood_glucose_level`.
 
 ***Problem Statement 2***: **Bagaimana cara memproses *dataset* agar dapat digunakan untuk pembuatan model *machine learning* klasifikasi penderita diabetes?**  
 - Pemrosesan mencakup *removal duplicates and NaN data*, *one-hot encoding*, penanganan *imbalance data* menggunakan SMOTE, standarisasi fitur, dan pembagian data (latih dan *testing*). 
@@ -853,8 +791,12 @@ Hasil evaluasi menunjukkan bahwa model yang dibangun telah **memenuhi seluruh pr
 - Metrik tambahan seperti presisi, recall, dan f1-score menunjukkan bahwa model dapat memberikan prediksi yang akurat dan memuaskan.
 - Berhasil mencapai *goals* yang ditetapkan: Membangun dan mengevaluasi model klasifikasi yang memiliki performa terbaik dalam memprediksi penderita diabetes.
 
-Solusi yang telah diperoleh juga memberikan dampak pada kasus terkait, di mana model yang dibuat mampu memprediksi secara dini dan akurat apakah seseorang menderita diabetes.
+Proyek ini bertujuan untuk mengembangkan model Machine Learning yang dapat mendeteksi diabetes secara dini dan akurat. Model ini menganalisis data kesehatan pasien untuk memprediksi risiko diabetes, sehingga memungkinkan dokter untuk mengambil tindakan preventif lebih awal. Pendekatan ini tidak hanya meningkatkan kualitas hidup pasien, tetapi juga mengurangi risiko komplikasi serius yang memerlukan pengobatan jangka panjang.
 
+**Dampak Proyek**
+
+Diabetes merupakan salah satu masalah utama kesehatan nasional di Indonesia yang menambah beban sistem kesehatan karena rendahnya tingkat deteksi dini.
+Model ini memberikan solusi yang signifikan untuk mendeteksi diabetes secara dini dan akurat, mendukung dokter, rumah sakit, pemerintah, dan masyarakat dalam menangani masalah ini.
 
 ## Referensi
 [1]	L. Puspitasari, “Rumah sakit dengan pelayanan berkualitas,” Siloam Hospitals. Accessed: Nov. 25, 2024. [Online]. Available: https://www.siloamhospitals.com/informasi-siloam/artikel/angka-diabetes-di-indonesia-semakin-tinggi-berikut-faktanya-1
